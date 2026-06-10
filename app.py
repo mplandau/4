@@ -1,12 +1,13 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 import requests
+import os 
 
 app = Flask(__name__)
 CORS(app)  # This allows your frontend website to securely talk to this server
 
 # Keep your key safe inside the backend code where visitors cannot see it
-API_KEY = '657b01cd985c4b1584456554f53ec021'
+API_KEY = os.getenv('NEWS_API_KEY')
 
 @app.route('/api/news')
 def get_site_news():
