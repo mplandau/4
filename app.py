@@ -10,10 +10,9 @@ API_KEY = '657b01cd985c4b1584456554f53ec021'
 
 @app.route('/api/news')
 def get_site_news():
-    # Fetch data on behalf of your frontend website
-    news_url = f'https://newsapi.org{API_KEY}'
+    # Correct the URL structure
+    news_url = f'https://newsapi.org/v2/top-headlines?country=us&apiKey={API_KEY}'
     response = requests.get(news_url)
-    
     if response.status_code == 200:
         return jsonify(response.json())
     return jsonify({"error": "Unable to fetch news"}), response.status_code
